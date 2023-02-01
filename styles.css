@@ -1,0 +1,52 @@
+body {
+  background: linear-gradient(to bottom, lightblue, white);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+.container {
+  background-color: rgb(300, 300, 300, 0.5);
+  border-radius: 30px;
+  padding: 2em;
+  height: 70vh;
+  width: 40vw;
+  box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.2);    
+  display: flex;
+  color: rgb(13, 75, 119);
+  flex-direction: column;
+  align-items: center;
+}
+
+input[type="time"] {
+  padding: 0.5em;
+  font-size: 1em;
+  margin: 10px;
+}
+
+#calculateBtn {
+  padding: 0.5em 1em;
+  font-size: 1em;
+  background-color: lightblue;
+  border: none;
+  border-radius: 5px;
+  color: #237492;
+  cursor: pointer;
+  margin-top: 1em;
+  transition: color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+#calculateBtn:hover {
+  box-shadow: inset 100px 0 0 0 #54b3d6;
+  color: white;
+}
+
+p {
+  margin: 1em 0;
+  font-size: 1.2em;
+  color: rgb(13, 75, 119);
+}
+
+label {
+    color: rgb(13, 75, 119);
+}
