@@ -1,5 +1,5 @@
 let punchIn, lunchStart, lunchEnd, punchOut, timeRemaining, comments;
-let audio = new Audio("alarm.mp3");
+let audio = new Audio("alarm (mp3cut.net).mp3");
 
 document.getElementById("calculateBtn").addEventListener("click", function () {
   punchIn = new Date("1970-01-01T" + document.getElementById("punchIn").value);
@@ -11,10 +11,11 @@ document.getElementById("calculateBtn").addEventListener("click", function () {
     "1970-01-01T" + document.getElementById("lunchEnd").value
   );
 
+
   let lunchDuration = new Date(lunchEnd.getTime() - lunchStart.getTime());
   let comments = document.getElementById("comments")
   if (lunchDuration.getTime() < 30 * 60 * 1000 || lunchDuration.getTime() > 60 * 60 * 1000) {
-    comments.innerHTML = "Lunch duration is not between 30 and 60 minutes."
+    comments.innerHTML = " ❗️ Lunch duration should be between 30 and 60 minutes ❗️"
   }
 
   punchOut = new Date(
