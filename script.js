@@ -1,5 +1,7 @@
 let punchIn, lunchStart, lunchEnd, punchOut, timeRemaining, comments;
 let audio = new Audio("alarm (mp3cut.net).mp3");
+audio.muted = false
+audio.autoplay = true;
 
 document.getElementById("calculateBtn").addEventListener("click", function () {
   punchIn = new Date("1970-01-01T" + document.getElementById("punchIn").value);
@@ -25,8 +27,7 @@ document.getElementById("calculateBtn").addEventListener("click", function () {
   );
 
   if (!punchIn || !lunchStart || !lunchEnd) {
-    alert("Please enter all times.");
-    return;
+    comments.innerHTML = " ❗️ Please fill in all the fields ❗️";
   }
 
   if (punchOut) {
