@@ -5,7 +5,6 @@ audio.autoplay = true;
 
 document.getElementById("calculateBtn").addEventListener("click", function () {
   punchIn = new Date("1970-01-01T" + document.getElementById("punchIn").value);
-  console.log(punchIn);
   lunchStart = new Date(
     "1970-01-01T" + document.getElementById("lunchStart").value
   );
@@ -27,7 +26,8 @@ document.getElementById("calculateBtn").addEventListener("click", function () {
   );
 
   if (!punchIn || !lunchStart || !lunchEnd) {
-    comments.innerHTML = " ❗️ Please fill in all the fields ❗️";
+    alert("Please fill in all the fields");
+    return;
   }
 
   if (punchOut) {
@@ -44,7 +44,6 @@ let countDown = setInterval(function () {
 
   timeRemaining = new Date(punchOut.getTime() - currentTime.getTime());
   let timeRemainingString =  (timeRemaining.getHours()  + ":" + timeRemaining.getMinutes() + ":" + timeRemaining.getSeconds());
-  console.log(timeRemainingString);
     if (timeRemainingString === "0:0:0") {
         audio.play();
         document.getElementById("comments").innerHTML = "Yay! Time's up! 🥳 ";
@@ -57,3 +56,24 @@ let countDown = setInterval(function () {
   document.getElementById("timeRemaining").innerHTML =
     timeRemaining.toLocaleTimeString();
 }, 1000);
+
+
+
+
+
+
+function calculateMinutesPerHour(hoursWorked, minutesWorked, timeRemainingMinutes) {
+    const targetMinutes = 312; // target number of hours to work
+  let minutesPerHour = (targetMinutes - ((hoursWorked*60) + minutesWorked) ) / timeRemainingMinutes * 60 ;
+  console.log(targetMinutes, hoursWorked, minutesWorked, timeRemainingMinutes);
+  return Math.floor(minutesPerHour);
+}
+
+function showResult() {
+  let hoursWorked = parseInt(document.getElementById("hoursWorked").value);
+  let minutesWorked = parseInt(document.getElementById("minutesWorked").value);
+  let timeRemainingMinutes = (timeRemaining.getHours()*60)+timeRemaining.getMinutes()
+  let minutesPerHour = parseInt(calculateMinutesPerHour(hoursWorked, minutesWorked,timeRemainingMinutes));
+  console.log(timeRemainingMinutes);
+  document.getElementById("result").innerHTML = "You need to work for " + minutesPerHour + " minutes per hour.";
+}

@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Punch Calculator</title>
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="styles.css" />
   </head>
   <body>
     <div class="container">
@@ -27,7 +27,16 @@
       <p>Punch Out: <span id="punchOut"></span></p>
       <p>Time Remaining: <span id="timeRemaining"></span></p>
       <span id="comments"></span>
+      <br><br>
+      <div class="pace container">
+        <h2>🏃‍♀️ Pace Calculator</h2>
+        <label>Hours Worked: <input type="text" value="0" id="hoursWorked" /></label>
+        <label>Minutes Worked: <input type="text" value="0" id="minutesWorked" /></label>
+        <button id="calculateBtn" onclick="showResult()">Show Result</button>
+        <p id="result"></p>
+      </div>
     </div>
+
     <script src="script.js"></script>
   </body>
 </html>
