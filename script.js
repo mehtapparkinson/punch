@@ -63,17 +63,31 @@ let countDown = setInterval(function () {
 
 
 function calculateMinutesPerHour(hoursWorked, minutesWorked, timeRemainingMinutes) {
-    const targetMinutes = 312; // target number of hours to work
+    const targetMinutes = 300; // target number of hours to work
   let minutesPerHour = (targetMinutes - ((hoursWorked*60) + minutesWorked) ) / timeRemainingMinutes * 60 ;
   console.log(targetMinutes, hoursWorked, minutesWorked, timeRemainingMinutes);
   return Math.floor(minutesPerHour);
 }
-
 function showResult() {
   let hoursWorked = parseInt(document.getElementById("hoursWorked").value);
   let minutesWorked = parseInt(document.getElementById("minutesWorked").value);
-  let timeRemainingMinutes = (timeRemaining.getHours()*60)+timeRemaining.getMinutes()
-  let minutesPerHour = parseInt(calculateMinutesPerHour(hoursWorked, minutesWorked,timeRemainingMinutes));
-  console.log(timeRemainingMinutes);
-  document.getElementById("result").innerHTML = "You need to work for " + minutesPerHour + " minutes per hour.";
+  let timeRemainingMinutes = (timeRemaining.getHours()*60)+timeRemaining.getMinutes();
+  const totalMinutesWorked = hoursWorked * 60 + minutesWorked;
+  let timeLeft = 300 - totalMinutesWorked;
+
+  const resultText =  timeLeft + " minutes more to go! 🚀 ";
+  if (timeRemainingMinutes >= 60) {
+    const minutesPerHour = calculateMinutesPerHour(hoursWorked, minutesWorked, timeRemainingMinutes);
+    document.getElementById("result").innerHTML = resultText + "<br> You need to work at " + minutesPerHour + " minutes per hour to reach your 🎯";
+  } else {
+    document.getElementById("result").innerHTML = resultText;
+  }
+  
+  const progressBar = document.getElementById("progressBar");
+  progressBar.value = totalMinutesWorked;
+
+  const progressPercentage = Math.round((totalMinutesWorked / 300) * 100);
+  
+  const progressText = document.getElementById("progressText");
+  progressText.innerText = `${progressPercentage}%`;
 }
